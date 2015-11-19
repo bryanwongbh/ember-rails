@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  mount API::Base, at: "/"
+  # mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
-  # jsonapi_resources :contacts 
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :contacts
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
