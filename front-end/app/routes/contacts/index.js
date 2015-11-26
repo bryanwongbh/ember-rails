@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   // model: function() {
   //   return this.store.find('contact');
   // }
-  model() {
-    return this.store.findAll('contact');
+  model(params) {
+    return this.store.query('contact', params);
   }
 });

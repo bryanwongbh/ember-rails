@@ -2,8 +2,10 @@
   {{#each model as |contact|}}
     <li>
       {{#link-to 'contact' contact}}
-        {{contact.lastName}},
-        {{contact.firstName}}
+      <p>
+        {{contact.lastName}},{{contact.firstName}}
+      </p>
+      <p>{{contact.email}}</p>
       {{/link-to}}
     </li>
   {{else}}
