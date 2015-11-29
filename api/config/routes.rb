@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
+
+  namespace :api do
+    namespace :v1 do
+      resources :contacts
+    end
+  end
   # jsonapi_resources :contacts 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
