@@ -1,42 +1,30 @@
-# class ContactsController < JsonApiController
+class ContactsController < ApplicationController
+	protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
+	respond_to :json
+  
+  def index
+    respond_with Contact.all
+  end
+  
+  def show
+    respond_with Contact.find(params[:id])
+  end
+  
+  def create
+  	respond_with Contact.create(contact_params)
+  end
+  
+  def update
+    respond_with Contact.update(params[:id], contact_params)
+  end
+  
+  def destroy
+    respond_with Contact.destroy(params[:id])
+  end
 
-#   def index
-#     render json: Contact.all
-#   end
+  private
 
-
-#   # def show
-#   #   set = Contact.find(params[:id])
-#   #   if set.public? || current_user == set.user
-#   #     render json: get_json(set, true)
-#   #   else
-#   #     render json: {error: 'Forbidden'}, :status => 403
-#   #   end
-#   # end
-
-
-#   private
-
-#   def set_params
-#     params.require(:card_set).permit(:name)
-#   end
-
-
-#   # def get_json(data, includeRelats=false)
-#   #   included = includeRelats ? ['cards','tags'] : []
-#   #   setSerializer = JSONAPI::ResourceSerializer.new(
-#   #       ContactResource, include: included,
-#   #       fields: {
-#   #           cards: [:card_set, :front, :back],
-#   #           tags:  [:card_set, :name]
-#   #       }
-#   #   )
-#   #   if data.kind_of?(Array)
-#   #     resources = data.map {|set| ContactResource.new set}
-#   #   else
-#   #     resources = ContactResource.new data
-#   #   end
-
-#   #   setSerializer.serialize_to_hash resources
-#   # end
-# end
+  	def contact_params
+  		params.require(:contact).permit(:first_name, :last_name, :email, :title)
+  	end
+end
