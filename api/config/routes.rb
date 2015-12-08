@@ -4,12 +4,6 @@ Rails.application.routes.draw do
   mount API::Base, at: "/"
   mount GrapeSwaggerRails::Engine, at: "/documentation"
 
-  namespace :api do
-    namespace :v1 do
-      resources :contacts
-    end
-  end
-
   resources :contacts
   # jsonapi_resources :contacts 
   # The priority is based upon order of creation: first created -> highest priority.
