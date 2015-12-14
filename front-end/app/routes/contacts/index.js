@@ -8,9 +8,9 @@ export default Ember.Route.extend({
     return this.store.query('contact', params);
   },
 	actions: {
-	  deleteContact: function(user) {
-	  	user.destroyRecord().then(() => {
-	  		this.transitionTo('index');
+	  deleteContact(contact) {
+	  	contact.destroyRecord().then(() => {
+	  		this.transitionTo('contacts');
 	 	 	}).catch((reason) => {
 	 	 		contact.reload();
 	 	 	});
