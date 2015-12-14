@@ -3,6 +3,12 @@ module API
     class Contacts < Grape::API
       include API::V1::Defaults
 
+      helpers do
+        def contacts_params
+          ActionController::Parameters.new(params).require(:contact).permit(:first_name, :last_name, :email, :title)
+        end
+      end
+
       resource :contacts do
         desc "Return all contacts"
         get "", root: :contacts do
@@ -19,17 +25,19 @@ module API
 
         desc "Create a contact"
         params do
-          requires :first_name, type: String, desc: "First Name"
-          requires :last_name, type: String, desc: "Last Name"
-          requires :email, type: String, desc: "Email"
-          requires :title, type: String, desc: "Title"
+          group :contact, type: Hash do
+            requires :first_name, type: String, desc: "First Name"
+            requires :last_name, type: String, desc: "Last Name"
+            requires :email, type: String, desc: "Email"
+            requires :title, type: String, desc: "Title"
+          end
         end
         post do
           Contact.create!({
-            first_name: params[:first_name],
-            last_name: params[:last_name],
-            email: params[:email],
-            title: params[:title]
+            first_name: params[:contact][:first_name],
+            last_name: params[:contact][:last_name],
+            email: params[:contact][:email],
+            title: params[:contact][:title]
           })
         end
 
