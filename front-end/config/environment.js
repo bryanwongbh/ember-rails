@@ -8,7 +8,7 @@ module.exports = function(environment) {
       'font-src': "'self'",
       'connect-src': "'self' *",
       'img-src': "'self'",
-      'style-src': "'self'",
+      'style-src': "'self' 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'",
       'media-src': "'self'"
     },
     modulePrefix: 'front-end',

@@ -1,17 +1,26 @@
 <h2>All Contacts</h2>
-<button class='btn btn-default'>{{#link-to 'contacts.new'}}Add New Contact{{/link-to}}</button>
-<ul class='list-group'>  
-  {{#each model as |contact|}}
-    <li class='list-group-item'>
-      {{#link-to 'contact' contact}}
-      <p>
-        {{contact.lastName}},{{contact.firstName}}
-      </p>
-      <p>{{contact.email}}</p>
-      {{/link-to}}
-      <button {{action 'deleteContact' contact}}>Delete</button>
-    </li>
-  {{else}}
-    <li>No contacts found.</li>
-  {{/each}}
-</ul>
+
+<div class='row'>
+  <div class='col-md-12'> 
+    <button class='btn btn-default'>{{#link-to 'contacts.new'}}Add New Contact{{/link-to}}</button>
+  </div> 
+</div>
+<div class='row'>
+  <div class='col-md-12'> 
+    <ul class='list-group'>  
+      {{#each model as |contact|}}
+        <li class='list-group-item'>
+          {{#link-to 'contact' contact}}
+          <p>
+            {{contact.lastName}},{{contact.firstName}}
+          </p>
+          <p>{{contact.email}}</p>
+          {{/link-to}}
+         <button {{action 'deleteContact' contact}}>Delete</button>
+       </li>
+      {{else}}
+        <li>No contacts found.</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
