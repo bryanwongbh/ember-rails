@@ -21,6 +21,10 @@ export default Ember.Route.extend({
     	this.currentModel.save().then((contact) => {
         this.transitionTo('contact', contact);
   		});
+  	},
+
+  	cancel: function(){
+  		this.transitionTo('contacts');
   	}
   }
 });
