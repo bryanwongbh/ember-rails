@@ -10,13 +10,13 @@
     <ul class='list-group'>  
       {{#each model as |contact|}}
         <li class='list-group-item'>
-          {{#link-to 'contact' contact}}
+          {{#link-to 'contacts.contact' contact}}
           <p>
             {{contact.lastName}},{{contact.firstName}}
           </p>
           <p>{{contact.email}}</p>
           {{/link-to}}
-         <button {{action 'deleteContact' contact}}>Delete</button>
+         <button {{action 'delete' contact}}>Delete</button>
        </li>
       {{else}}
         <li>No contacts found.</li>

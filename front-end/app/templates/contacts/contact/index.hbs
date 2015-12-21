@@ -1,5 +1,5 @@
 <h2>{{model.firstName}} {{model.lastName}}</h2>
-
+<button class='btn btn-default'>{{#link-to 'contacts.contact.edit' }}Edit Contact{{/link-to}}</button>
 <div class='row'>
   <div class='col-md-12'>
     <h3>Email</h3>
@@ -16,4 +16,5 @@
       Created at: {{formatted-date model.createdAt 'MMMM Do, YYYY [at] h:mm a'}}
     </p>
   </div>
+  {{ outlet }}
 </div>

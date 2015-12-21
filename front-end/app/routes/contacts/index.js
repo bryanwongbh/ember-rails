@@ -5,15 +5,6 @@ export default Ember.Route.extend({
   //   return this.store.find('contact');
   // }
   model(params) {
-    return this.store.query('contact', params);
-  },
-	actions: {
-	  deleteContact(contact) {
-	  	contact.destroyRecord().then(() => {
-	  		this.transitionTo('contacts');
-	 	 	}).catch((reason) => {
-	 	 		contact.reload();
-	 	 	});
-	 	}
-	}
+    return this.store.query('contact', params);    
+  }
 });

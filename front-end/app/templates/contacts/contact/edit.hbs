@@ -1,0 +1,22 @@
+<h2>Edit Contact</h2>
+
+<form class="form-inline">
+	<div class="form-group">
+    <label class="sr-only" for="titleInput">Title</label>
+    {{input type="text" class="form-control" id="titleInput" placeholder="The Great Title" value=model.title}}
+  </div>
+	<div class="form-group">
+    <label class="sr-only" for="firstNameInput">First Name</label>
+    {{input type="text" class="form-control" id="firstNameInput" placeholder="John" value=model.firstName}}
+  </div>
+	<div class="form-group">
+    <label class="sr-only" for="lastNameInput">Last Name</label>
+    {{input type="text" class="form-control" id="lastNameInput" placeholder="Doe" value=model.lastName}}
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="emailInput">Email Address</label>
+    {{input type="email" class="form-control" id="emailInput" placeholder="johndoe@email.com" value=model.email}}
+  </div>
+  <button class="btn btn-default" {{action 'submit'}} >Update</button>
+  <button class="btn btn-primary" {{action 'cancel'}} >Cancel</button>
+</form>
