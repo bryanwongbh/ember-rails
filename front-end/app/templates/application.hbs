@@ -19,5 +19,11 @@
   </div>
 </nav>
 <div class='container'>
+  {{#if session.isAuthenticated}}
+    {{#link-to 'protected'}}Protected{{/link-to}}
+    <button {{action 'invalidateSession'}}>Logout</button>
+  {{else}}
+    {{#link-to 'login'}}Login{{/link-to}}
+  {{/if}}
 	{{outlet}}
 </div>
