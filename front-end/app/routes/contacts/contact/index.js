@@ -8,6 +8,8 @@ export default Ember.Route.extend({
   //   return this.store.find('contact', params.contact_id);
   // }
   model(params) {
-    return this.store.findRecord('contact', params.contact_id);
+  	console.log("Hello from route!!" + this._super(...arguments).get('id'));
+    return this.store.find('contact', this._super(...arguments).get('id'));
+
   }
 });
