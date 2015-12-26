@@ -1,18 +1,7 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
-	// model() {
- //    return {};
- //  },
- //  actions: {
- //    createContact(contact) {
-	//   	const newContact = this.store.createRecord('contact', this.modelFor('contact'));
-	//   	  newContact.save().then((contact) => {
- //        this.transitionTo('contact', contact);
- //      });
-	//  	}
- //  }
-
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	model: function() {
  		return this.store.createRecord('contact');
 	}
